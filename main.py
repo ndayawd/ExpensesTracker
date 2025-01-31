@@ -2,9 +2,6 @@ import os
 from datetime import datetime 
 import time
 
-
-expenses = {}
-
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 clear()
@@ -13,8 +10,6 @@ expenses = {"Date": [], "Category": [], "Name": [], "Amount": []}
 
 print("Action:\n1. Add Expenses\n2. View Expenses\n3. Calculate Total Expenses\n4. Delete Expenses\n\n\n")
 def main():
-    
-    
     action = input("Select an action (1/2/3/4): ")
     if action == '1':
         clear()
@@ -77,7 +72,6 @@ def view_expenses():
     else:
         print("Expense Tracker - Current Expenses:\n")
         print(expenses)
-
         user_input = input("Press enter to Exit: ")
         if user_input.lower() == 'exit':
             clear()
@@ -91,12 +85,7 @@ def view_expenses():
 def calculate_total_expenses():
     print("")
 
-def calculate_total_expenses():
-    print("")
-
 def delete_expenses():
     print("")
 
-def delete_expenses():
-    print("")
 main()
