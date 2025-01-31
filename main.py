@@ -56,6 +56,10 @@ def add_expenses():
         expenses["Name"].append(name)
         expenses["Date"].append(date)
         print(f"{expenses}")
+        user_input = input("\nPress enter to Exit: ")
+        clear()
+        print("Action:\n1. Add Expenses\n2. View Expenses\n3. Calculate Total Expenses\n4. Delete Expenses\n\n\n")
+        main()
         
 def view_expenses():
     if len(expenses) < 1:
