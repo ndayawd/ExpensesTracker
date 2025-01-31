@@ -7,7 +7,7 @@ def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 clear()
 
-expenses = {}
+expenses = {"Date": [], "Category": [], "Name": [], "Amount": []}  
 
 print("Action:\n1. Add Expenses\n2. View Expenses\n3. Calculate Total Expenses\n4. Delete Expenses\n\n\n")
 
@@ -31,14 +31,16 @@ def main():
         main()
 
 def add_expenses(): 
-        expense_name = input("Add an Expense: ")
-        expense_category = input("Enter a category for your expense: ")
+        category = input("Enter a category for your expense: ")
+        name = input("Enter a name for your expense: ")
         while True:
             try:
-                expense_amount = int(input("Enter an amount: "))
+                amount = input("Enter an amount: ")
+                amount = "{:.2f}".format(float(amount))
                 break
             except Exception as e:
                 clear()
+                print(e)
                 print("please enter a valid number")
                 time.sleep(1)
                 clear()
@@ -47,14 +49,16 @@ def add_expenses():
             date_input = input("Enter a date (in YYYY-MM-DD format): ")
             try:
                 date_object = datetime.strptime(date_input, "%Y-%m-%d")
-                print(f"The date you entered is: {date_object}")
+                date = date_object.date()
+                print(f"The date you entered is: {date}") 
                 break
             except ValueError:
                 print("Please enter in YYYY-MM-DD")
-
-        expenses[expense_name] = (expense_category, expense_amount)
-        print(expenses)
-
+        expenses["Amount"].append(amount)
+        expenses["Category"].append(category)
+        expenses["Name"].append(name)
+        expenses["Date"].append(date)
+        print(f"{expenses}")
 def view_expenses():
     print("")
 
