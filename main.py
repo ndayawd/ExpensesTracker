@@ -9,7 +9,17 @@ def clear():
 clear()
 
 def main(message):
-    print(f"Expense Tracker\n\nNo Expenses\n\nActions\n1. Add Expenses\n2. Delete Expenses\n{message}" if expenses["Date"] == [] else f"Expense Tracker\n\n{expenses}\n\nActions\n1. Add Expenses\n2. Delete Expenses\n{message}") 
+    expenses_formatted = []
+    for i in range(len(expenses["Date"])):
+        formatted_string = f"Date: {str(expenses["Date"][i-1])} Category: {expenses["Category"][i-1]} Name: {expenses["Name"][i-1]} Amount: ${expenses["Amount"][i-1]}"
+        expenses_formatted.append(formatted_string)
+    print(f"Expense Tracker\n\nNo Expenses\n\nActions\n1. Add Expenses\n2. Delete Expenses\n{message}" if expenses["Date"] == [] else f"Expense Tracker\n\n")
+    if expenses["Date"] != []:
+        i = 0
+        for items in expenses_formatted:
+            print(str(i+1) + ":", items)
+            i += 1
+        print(f"\n\nActions\n1. Add Expenses\n2. Delete Expenses\n{message}")
     action = input("Select an action (1/2): ")
     if action == '1':
         clear()
@@ -53,8 +63,10 @@ def add_expenses():
     expenses["Name"].append(name)
     expenses["Date"].append(date)
     print(f"\nExpense added")
+    clear()
+    main("")
 
 def delete_expenses():
-    print("")
+    print("")0
 
 main("")
